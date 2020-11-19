@@ -2294,3 +2294,10 @@ VERIFY_STUDENT = {
     # The variable represents the window within which a verification is considered to be "expiring soon."
     "EXPIRING_SOON_WINDOW": 28,
 }
+
+################# Settings for brand logos. #################
+LOGO_URL = None
+LOGO_URL_PNG = None
+LOGO_TRADEMARK_URL = None
+FAVICON_URL = None
+DEFAULT_EMAIL_LOGO_URL = 'https://edx-cdn.org/v3/default/logo.png'
