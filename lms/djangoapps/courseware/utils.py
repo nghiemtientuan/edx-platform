@@ -51,6 +51,7 @@ def can_show_verified_upgrade(user, enrollment, course=None):
     """
     if enrollment is None:
         return False  # this got accidentally flipped in 2017 (commit 8468357), but leaving alone to not switch again
+    return True
     partition_service = PartitionService(enrollment.course.id, course=course)
     enrollment_track_partition = partition_service.get_user_partition(ENROLLMENT_TRACK_PARTITION_ID)
     group = partition_service.get_group(user, enrollment_track_partition)

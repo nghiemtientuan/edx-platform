@@ -40,7 +40,6 @@ from xmodule.course_module import COURSE_VISIBILITY_PUBLIC, COURSE_VISIBILITY_PU
 from .. import (
     COURSE_ENABLE_UNENROLLED_ACCESS_FLAG,
     LATEST_UPDATE_FLAG,
-    SHOW_UPGRADE_MSG_ON_COURSE_HOME,
 )
 from ..utils import get_course_outline_block_tree, get_resume_block
 from .course_dates import CourseDatesFragmentView
@@ -202,12 +201,7 @@ class CourseHomeFragmentView(EdxFragmentView):
         upgrade_url = None
         has_discount = False
 
-        # TODO Add switch to control deployment
-        if SHOW_UPGRADE_MSG_ON_COURSE_HOME.is_enabled(course_key) and can_show_verified_upgrade(
-            request.user,
-            enrollment,
-            course
-        ):
+        if can_show_verified_upgrade(request.user, enrollment, course):
             upgrade_url = verified_upgrade_deadline_link(request.user, course_id=course_key)
             upgrade_price, has_discount = format_strikeout_price(request.user, course_overview)
 

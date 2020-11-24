@@ -51,7 +51,6 @@ from openedx.features.course_duration_limits.models import CourseDurationLimitCo
 from openedx.features.course_experience import (
     COURSE_ENABLE_UNENROLLED_ACCESS_FLAG,
     DISABLE_UNIFIED_COURSE_TAB_FLAG,
-    SHOW_UPGRADE_MSG_ON_COURSE_HOME
 )
 from openedx.features.course_experience.tests import BaseCourseUpdatesTestCase
 from openedx.features.discounts.applicability import get_discount_expiration_date
@@ -951,10 +950,6 @@ class CourseHomeFragmentViewTests(ModuleStoreTestCase):
         self.user = UserFactory()
         self.client.login(username=self.user.username, password=TEST_PASSWORD)
 
-        name = SHOW_UPGRADE_MSG_ON_COURSE_HOME.waffle_namespace._namespaced_name(
-            SHOW_UPGRADE_MSG_ON_COURSE_HOME.flag_name)
-        self.flag, __ = Flag.objects.update_or_create(name=name, defaults={'everyone': True})
-
     def assert_upgrade_message_not_displayed(self):
         response = self.client.get(self.url)
         self.assertNotContains(response, 'section-upgrade')
@@ -987,12 +982,6 @@ class CourseHomeFragmentViewTests(ModuleStoreTestCase):
         self.verified_mode.save()
         self.assert_upgrade_message_not_displayed()
 
-    def test_no_upgrade_message_if_flag_disabled(self):
-        self.flag.everyone = False
-        self.flag.save()
-        CourseEnrollment.enroll(self.user, self.course.id, CourseMode.AUDIT)
-        self.assert_upgrade_message_not_displayed()
-
     def test_display_upgrade_message_if_audit_and_deadline_not_passed(self):
         CourseEnrollment.enroll(self.user, self.course.id, CourseMode.AUDIT)
         self.assert_upgrade_message_displayed()
@@ -1004,8 +993,5 @@ class CourseHomeFragmentViewTests(ModuleStoreTestCase):
     def test_upgrade_message_discount(self):
         # pylint: disable=no-member
         CourseEnrollment.enroll(self.user, self.course.id, CourseMode.AUDIT)
-
-        with override_waffle_flag(SHOW_UPGRADE_MSG_ON_COURSE_HOME, True):
-            response = self.client.get(self.url)
-
+        response = self.client.get(self.url)
         self.assertContains(response, "<span>DISCOUNT_PRICE</span>")

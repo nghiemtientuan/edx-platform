@@ -4,7 +4,7 @@ Tests for masquerading functionality on course_experience
 
 from edx_toggles.toggles.testutils import override_waffle_flag
 from lms.djangoapps.courseware.tests.helpers import MasqueradeMixin
-from openedx.features.course_experience import DISPLAY_COURSE_SOCK_FLAG, SHOW_UPGRADE_MSG_ON_COURSE_HOME
+from openedx.features.course_experience import DISPLAY_COURSE_SOCK_FLAG
 from common.djangoapps.student.roles import CourseStaffRole
 from common.djangoapps.student.tests.factories import CourseEnrollmentFactory, UserFactory
 from xmodule.modulestore.tests.django_utils import SharedModuleStoreTestCase
@@ -67,7 +67,6 @@ class TestVerifiedUpgradesWithMasquerade(MasqueradeTestBase):
     """
 
     @override_waffle_flag(DISPLAY_COURSE_SOCK_FLAG, active=True)
-    @override_waffle_flag(SHOW_UPGRADE_MSG_ON_COURSE_HOME, active=True)
     def test_masquerade_as_student(self):
         # Elevate the staff user to be student
         self.update_masquerade(course=self.verified_course, user_partition_id=ENROLLMENT_TRACK_PARTITION_ID)
