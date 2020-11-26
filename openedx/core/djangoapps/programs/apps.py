@@ -14,4 +14,4 @@ class ProgramsConfig(AppConfig):
 
     def ready(self):
         # noinspection PyUnresolvedReferences
-        from . import signals, tasks  # pylint: disable=unused-variable
+        from . import signals  # pylint: disable=unused-variable
