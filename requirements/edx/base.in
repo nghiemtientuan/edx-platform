@@ -67,7 +67,7 @@ django-storages
 django-user-tasks
 django-waffle
 django-webpack-loader               # Used to wire webpack bundles into the django asset pipeline
-djangorestframework==3.9.4
+djangorestframework
 edx-ace
 edx-analytics-data-api-client
 edx-api-doc-tools
@@ -87,7 +87,7 @@ edx-proctoring-proctortrack==1.0.5  # Intentionally and permanently pinned to en
 edx-rest-api-client
 edx-search
 edx-sga
-edx-submissions
+-e git+https://github.com/edx/edx-submissions@bca91901584955eb5cc5a5b17996123c4265bc46#egg=edx-submissions
 edx-toggles                         # Feature toggles management
 edx-user-state-client
 edx-when
