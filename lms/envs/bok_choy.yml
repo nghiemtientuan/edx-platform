@@ -244,7 +244,7 @@ THIRD_PARTY_AUTH:
   Facebook:
     SOCIAL_AUTH_FACEBOOK_KEY": "test"
     SOCIAL_AUTH_FACEBOOK_SECRET": "test"
-TIME_ZONE: America/New_York
+TIME_ZONE: Asia/Ho_Chi_Minh
 TRACKING_BACKENDS:
   mongo:
     ENGINE: track.backends.mongodb.MongoBackend

@@ -120,7 +120,7 @@ SOCIAL_SHARING_SETTINGS: {CUSTOM_COURSE_URLS: true}
 STATIC_URL_BASE: /static/
 SYSLOG_SERVER: ''
 TECH_SUPPORT_EMAIL: technical@example.com
-TIME_ZONE: America/New_York
+TIME_ZONE: Asia/Ho_Chi_Minh
 WIKI_ENABLED: true
 XQUEUE_INTERFACE:
   basic_auth: [edx, edx]
