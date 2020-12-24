@@ -58,8 +58,8 @@ from lms.djangoapps.lms_xblock.mixin import LmsBlockMixin
 
 ################################### FEATURES ###################################
 # The display name of the platform to be used in templates/emails/etc.
-PLATFORM_NAME = _('Your Platform Name Here')
-PLATFORM_DESCRIPTION = _('Your Platform Description Here')
+PLATFORM_NAME = _('BKEdx')
+PLATFORM_DESCRIPTION = _('BKEdx Description')
 CC_MERCHANT_NAME = PLATFORM_NAME
 
 PLATFORM_FACEBOOK_ACCOUNT = "http://www.facebook.com/YourPlatformFacebookAccount"
@@ -68,7 +68,7 @@ PLATFORM_TWITTER_ACCOUNT = "@YourPlatformTwitterAccount"
 
 ENABLE_JASMINE = False
 
-LMS_ROOT_URL = 'https://localhost:18000'
+LMS_ROOT_URL = 'http://localhost:18000'
 LMS_INTERNAL_ROOT_URL = LMS_ROOT_URL
 LMS_ENROLLMENT_API_PATH = "/api/enrollment/v1/"
 
@@ -133,7 +133,7 @@ FEATURES = {
     'DISABLE_LOGIN_BUTTON': False,  # used in systems where login is automatic, eg MIT SSL
 
     # Toggles OAuth2 authentication provider
-    'ENABLE_OAUTH2_PROVIDER': False,
+    'ENABLE_OAUTH2_PROVIDER': True,
 
     # Allows to enable an API endpoint to serve XBlock view, used for example by external applications.
     # See jquey-xblock: https://github.com/edx-solutions/jquery-xblock
@@ -245,7 +245,7 @@ FEATURES = {
 
     # Turn on third-party auth. Disabled for now because full implementations are not yet available. Remember to run
     # migrations if you enable this; we don't create tables by default.
-    'ENABLE_THIRD_PARTY_AUTH': False,
+    'ENABLE_THIRD_PARTY_AUTH': True,
 
     # Toggle to enable alternate urls for marketing links
     'ENABLE_MKTG_SITE': False,
@@ -276,33 +276,33 @@ FEATURES = {
     'ENABLE_FOOTER_MOBILE_APP_LINKS': False,
 
     # Let students save and manage their annotations
-    'ENABLE_EDXNOTES': False,
+    'ENABLE_EDXNOTES': True,
 
     # Toggle to enable coordination with the Publisher tool (keep in sync with cms/envs/common.py)
-    'ENABLE_PUBLISHER': False,
+    'ENABLE_PUBLISHER': True,
 
     # Milestones application flag
-    'MILESTONES_APP': False,
+    'MILESTONES_APP': True,
 
     # Organizations application flag
     'ORGANIZATIONS_APP': False,
 
     # Prerequisite courses feature flag
-    'ENABLE_PREREQUISITE_COURSES': False,
+    'ENABLE_PREREQUISITE_COURSES': True,
 
     # For easily adding modes to courses during acceptance testing
     'MODE_CREATION_FOR_TESTING': False,
 
     # For caching programs in contexts where the LMS can only
     # be reached over HTTP.
-    'EXPOSE_CACHE_PROGRAMS_ENDPOINT': False,
+    'EXPOSE_CACHE_PROGRAMS_ENDPOINT': True,
 
     # Courseware search feature
-    'ENABLE_COURSEWARE_SEARCH': False,
-    'ENABLE_COURSEWARE_SEARCH_FOR_COURSE_STAFF': False,
+    'ENABLE_COURSEWARE_SEARCH': True,
+    'ENABLE_COURSEWARE_SEARCH_FOR_COURSE_STAFF': True,
 
     # Dashboard search feature
-    'ENABLE_DASHBOARD_SEARCH': False,
+    'ENABLE_DASHBOARD_SEARCH': True,
 
     # log all information from cybersource callbacks
     'LOG_POSTPAY_CALLBACKS': True,
@@ -311,10 +311,10 @@ FEATURES = {
     'LICENSING': False,
 
     # Certificates Web/HTML Views
-    'CERTIFICATES_HTML_VIEW': False,
+    'CERTIFICATES_HTML_VIEW': True,
 
     # Course discovery feature
-    'ENABLE_COURSE_DISCOVERY': False,
+    'ENABLE_COURSE_DISCOVERY': True,
 
     # Setting for overriding default filtering facets for Course discovery
     # COURSE_DISCOVERY_FILTERS = ["org", "language", "modes"]
@@ -332,7 +332,7 @@ FEATURES = {
     'SHOW_BUMPER_PERIODICITY': 7 * 24 * 3600,
 
     # Special Exams, aka Timed and Proctored Exams
-    'ENABLE_SPECIAL_EXAMS': False,
+    'ENABLE_SPECIAL_EXAMS': True,
 
     # Enable OpenBadge support. See the BADGR_* settings later in this file.
     'ENABLE_OPENBADGES': False,
@@ -341,7 +341,7 @@ FEATURES = {
     'ENABLE_LTI_PROVIDER': False,
 
     # Show the language selector in the header
-    'SHOW_HEADER_LANGUAGE_SELECTOR': False,
+    'SHOW_HEADER_LANGUAGE_SELECTOR': True,
 
     # At edX it's safe to assume that English transcripts are always available
     # This is not the case for all installations.
@@ -349,7 +349,7 @@ FEATURES = {
     'FALLBACK_TO_ENGLISH_TRANSCRIPTS': True,
 
     # Show the language selector in the footer
-    'SHOW_FOOTER_LANGUAGE_SELECTOR': False,
+    'SHOW_FOOTER_LANGUAGE_SELECTOR': True,
 
     # Write new CSM history to the extended table.
     # This will eventually default to True and may be
@@ -406,7 +406,7 @@ FEATURES = {
     'ENABLE_ACCOUNT_DELETION': True,
 
     # Enable feature to remove enrollments and users. Used to reset state of master's integration environments
-    'ENABLE_ENROLLMENT_RESET': False,
+    'ENABLE_ENROLLMENT_RESET': True,
     'DISABLE_MOBILE_COURSE_AVAILABLE': False,
 
     # .. toggle_name: ENABLE_CHANGE_USER_PASSWORD_ADMIN
@@ -1158,6 +1158,7 @@ DCS_SESSION_COOKIE_SAMESITE_FORCE_ALL = True
 
 # CMS base
 CMS_BASE = 'localhost:18010'
+CMS_ROOT_URL = "http://localhost:18010"
 
 # LMS base
 LMS_BASE = 'localhost:18000'
@@ -3455,9 +3456,9 @@ NOTIFICATION_EMAIL_EDX_LOGO = "templates/credit_notifications/edx-logo-header.pn
 
 ################################ Settings for JWTs ################################
 
-JWT_ISSUER = 'http://127.0.0.1:8000/oauth2'
+JWT_ISSUER = 'http://localhost:8000/oauth2'
 DEFAULT_JWT_ISSUER = {
-    'ISSUER': 'http://127.0.0.1:8000/oauth2',
+    'ISSUER': 'http://localhost:8000/oauth2',
     'AUDIENCE': 'change-me',
     'SECRET_KEY': 'SET-ME-PLEASE'
 }
@@ -3489,11 +3490,11 @@ JWT_AUTH = {
     'JWT_PRIVATE_SIGNING_JWK': None,
     'JWT_PUBLIC_SIGNING_JWK_SET': None,
 
-    'JWT_ISSUER': 'http://127.0.0.1:8000/oauth2',
+    'JWT_ISSUER': 'http://localhost:8000/oauth2',
     'JWT_AUDIENCE': 'change-me',
     'JWT_ISSUERS': [
         {
-            'ISSUER': 'http://127.0.0.1:8000/oauth2',
+            'ISSUER': 'http://localhost:8000/oauth2',
             'AUDIENCE': 'change-me',
             'SECRET_KEY': SECRET_KEY
         }
@@ -3631,7 +3632,7 @@ ENTERPRISE_INTEGRATIONS_EMAIL = "enterprise-integrations@edx.org"
 # These default settings are utilized by the LMS when interacting with the service,
 # and are overridden by the configuration parameter accessors defined in production.py
 
-ENTERPRISE_API_URL = 'https://localhost:18000/enterprise/api/v1'
+ENTERPRISE_API_URL = 'http://localhost:18000/enterprise/api/v1'
 ENTERPRISE_CONSENT_API_URL = LMS_INTERNAL_ROOT_URL + '/consent/api/v1/'
 ENTERPRISE_SERVICE_WORKER_USERNAME = 'enterprise_worker'
 ENTERPRISE_API_CACHE_TIMEOUT = 3600  # Value is in seconds
