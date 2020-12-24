@@ -150,8 +150,8 @@ BLOCK_STRUCTURES_SETTINGS = dict(
 
 ############################ FEATURE CONFIGURATION #############################
 
-PLATFORM_NAME = _('Your Platform Name Here')
-PLATFORM_DESCRIPTION = _('Your Platform Description Here')
+PLATFORM_NAME = _('BKEdx')
+PLATFORM_DESCRIPTION = _('BKEdx Description')
 
 PLATFORM_FACEBOOK_ACCOUNT = "http://www.facebook.com/YourPlatformFacebookAccount"
 PLATFORM_TWITTER_ACCOUNT = "@YourPlatformTwitterAccount"
@@ -159,7 +159,7 @@ PLATFORM_TWITTER_ACCOUNT = "@YourPlatformTwitterAccount"
 # Dummy secret key for dev/test
 SECRET_KEY = 'dev key'
 FAVICON_PATH = 'images/favicon.ico'
-STUDIO_NAME = _("Your Platform Studio")
+STUDIO_NAME = _("BKEdx Studio")
 STUDIO_SHORT_NAME = _("Studio")
 FEATURES = {
     'GITHUB_PUSH': False,
@@ -218,14 +218,14 @@ FEATURES = {
     # let students save and manage their annotations
     # for consistency in user-experience, keep the value of this feature flag
     # in sync with the one in lms/envs/common.py
-    'ENABLE_EDXNOTES': False,
+    'ENABLE_EDXNOTES': True,
 
     # Toggle to enable coordination with the Publisher tool (keep in sync with lms/envs/common.py)
-    'ENABLE_PUBLISHER': False,
+    'ENABLE_PUBLISHER': True,
 
     # Show a new field in "Advanced settings" that can store custom data about a
     # course and that can be read from themes
-    'ENABLE_OTHER_COURSE_SETTINGS': False,
+    'ENABLE_OTHER_COURSE_SETTINGS': True,
 
     # Write new CSM history to the extended table.
     # This will eventually default to True and may be
@@ -239,28 +239,28 @@ FEATURES = {
     'ENABLE_CONTENT_LIBRARIES': True,
 
     # Milestones application flag
-    'MILESTONES_APP': False,
+    'MILESTONES_APP': True,
 
     # Prerequisite courses feature flag
-    'ENABLE_PREREQUISITE_COURSES': False,
+    'ENABLE_PREREQUISITE_COURSES': True,
 
     # Toggle course entrance exams feature
-    'ENTRANCE_EXAMS': False,
+    'ENTRANCE_EXAMS': True,
 
     # Toggle platform-wide course licensing
     'LICENSING': False,
 
     # Enable the courseware search functionality
-    'ENABLE_COURSEWARE_INDEX': False,
+    'ENABLE_COURSEWARE_INDEX': True,
 
     # Enable content libraries search functionality
-    'ENABLE_LIBRARY_INDEX': False,
+    'ENABLE_LIBRARY_INDEX': True,
 
     # Enable course reruns, which will always use the split modulestore
     'ALLOW_COURSE_RERUNS': True,
 
     # Certificates Web/HTML Views
-    'CERTIFICATES_HTML_VIEW': False,
+    'CERTIFICATES_HTML_VIEW': True,
 
     # Teams feature
     'ENABLE_TEAMS': True,
@@ -278,12 +278,12 @@ FEATURES = {
     'ENABLE_CREDIT_ELIGIBILITY': ENABLE_CREDIT_ELIGIBILITY,
 
     # Special Exams, aka Timed and Proctored Exams
-    'ENABLE_SPECIAL_EXAMS': False,
+    'ENABLE_SPECIAL_EXAMS': True,
 
     'ORGANIZATIONS_APP': False,
 
     # Show the language selector in the header
-    'SHOW_HEADER_LANGUAGE_SELECTOR': False,
+    'SHOW_HEADER_LANGUAGE_SELECTOR': True,
 
     # At edX it's safe to assume that English transcripts are always available
     # This is not the case for all installations.
@@ -322,13 +322,13 @@ FEATURES = {
     'ENABLE_CROSS_DOMAIN_CSRF_COOKIE': False,
     'ENABLE_COUNTRY_ACCESS': False,
     'ENABLE_CREDIT_API': False,
-    'ENABLE_OAUTH2_PROVIDER': False,
+    'ENABLE_OAUTH2_PROVIDER': True,
     'ENABLE_SYSADMIN_DASHBOARD': False,
     'ENABLE_MOBILE_REST_API': False,
     'CUSTOM_COURSES_EDX': False,
     'ENABLE_READING_FROM_MULTIPLE_HISTORY_TABLES': True,
-    'SHOW_FOOTER_LANGUAGE_SELECTOR': False,
-    'ENABLE_ENROLLMENT_RESET': False,
+    'SHOW_FOOTER_LANGUAGE_SELECTOR': True,
+    'ENABLE_ENROLLMENT_RESET': True,
     'DISABLE_MOBILE_COURSE_AVAILABLE': False,
 
     # .. toggle_name: ENABLE_CHANGE_USER_PASSWORD_ADMIN
@@ -570,17 +570,17 @@ ICP_LICENSE_INFO = {}
 LOGGING_ENV = 'sandbox'
 
 LMS_BASE = 'localhost:18000'
-LMS_ROOT_URL = "https://localhost:18000"
+LMS_ROOT_URL = "http://localhost:18000"
 LMS_INTERNAL_ROOT_URL = LMS_ROOT_URL
 
 LOGIN_REDIRECT_URL = EDX_ROOT_URL + '/home/'
 # TODO: Determine if LOGIN_URL could be set to the FRONTEND_LOGIN_URL value instead.
 LOGIN_URL = reverse_lazy('login_redirect_to_lms')
-FRONTEND_LOGIN_URL = lambda settings: settings.LMS_ROOT_URL + '/login'
+FRONTEND_LOGIN_URL = lambda settings: LMS_ROOT_URL + '/login'
 derived('FRONTEND_LOGIN_URL')
-FRONTEND_LOGOUT_URL = lambda settings: settings.LMS_ROOT_URL + '/logout'
+FRONTEND_LOGOUT_URL = lambda settings: LMS_ROOT_URL + '/logout'
 derived('FRONTEND_LOGOUT_URL')
-FRONTEND_REGISTER_URL = lambda settings: settings.LMS_ROOT_URL + '/register'
+FRONTEND_REGISTER_URL = lambda settings: LMS_ROOT_URL + '/register'
 derived('FRONTEND_REGISTER_URL')
 
 LMS_ENROLLMENT_API_PATH = "/api/enrollment/v1/"
@@ -590,6 +590,7 @@ ENTERPRISE_MARKETING_FOOTER_QUERY_PARAMS = {}
 
 # Public domain name of Studio (should be resolvable from the end-user's browser)
 CMS_BASE = 'localhost:18010'
+CMS_ROOT_URL = "http://localhost:18010"
 
 LOG_DIR = '/edx/var/log/edx'
 
@@ -2198,16 +2199,16 @@ BLOCKSTORE_API_URL = 'http://localhost:18250/api/v1/'
 XBLOCK_RUNTIME_V2_EPHEMERAL_DATA_CACHE = 'default'
 
 ###################### LEARNER PORTAL ################################
-LEARNER_PORTAL_URL_ROOT = 'https://learner-portal-localhost:18000'
+LEARNER_PORTAL_URL_ROOT = 'http://localhost:18000'
 
 ######################### MICROSITE ###############################
 MICROSITE_ROOT_DIR = '/edx/app/edxapp/edx-microsite'
 MICROSITE_CONFIGURATION = {}
 
 ############################ JWT #################################
-JWT_ISSUER = 'http://127.0.0.1:8000/oauth2'
+JWT_ISSUER = 'http://localhost:8000/oauth2'
 DEFAULT_JWT_ISSUER = {
-    'ISSUER': 'http://127.0.0.1:8000/oauth2',
+    'ISSUER': 'http://localhost:8000/oauth2',
     'AUDIENCE': 'SET-ME-PLEASE',
     'SECRET_KEY': 'SET-ME-PLEASE'
 }

@@ -55,6 +55,11 @@ show_preview_menu = course and can_masquerade and supports_preview_menu
                     </form>
                 </li>
             </ol>
+
+            <a class="btn btn-success" style="border: solid 1px white;" href="${settings.CMS_ROOT_URL}/course/${course.id}">
+                <span class="icon fa fa-pencil"></span> Edit this course
+            </a>
+
             % if specific_student_selected:
                 <div class="preview-specific-student-notice">
                     <p>
