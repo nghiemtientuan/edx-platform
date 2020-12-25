@@ -40,7 +40,7 @@ from openedx.core.djangolib.js_utils import (
             <a href="#" class="button new-button new-library-button"><span class="icon fa fa-plus icon-inline" aria-hidden="true"></span>
             ${_("New Library")}</a>
           % endif
-          <a href="http://192.168.151.228:2222/wp-admin" target="_blank" class="button new-button"><span class="icon fa fa-plus icon-inline" aria-hidden="true"></span>
+          <a href="${settings.INTERACTIVE_VIDEO_LINK_URL}" target="_blank" class="button new-button"><span class="icon fa fa-plus icon-inline" aria-hidden="true"></span>
             Create interactive video</a>
         </li>
       </ul>

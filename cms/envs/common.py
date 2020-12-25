@@ -126,6 +126,8 @@ from openedx.core.release import doc_version
 
 # pylint: enable=useless-suppression
 
+SERVER_ROOT_PROTOCOL = 'http'
+SERVER_ROOT_DOMAIN = 'localhost'
 ################ Enable credit eligibility feature ####################
 ENABLE_CREDIT_ELIGIBILITY = True
 
@@ -569,8 +571,8 @@ ICP_LICENSE_INFO = {}
 
 LOGGING_ENV = 'sandbox'
 
-LMS_BASE = 'localhost:18000'
-LMS_ROOT_URL = "http://localhost:18000"
+LMS_BASE = '{domain}:18000'.format(domain=SERVER_ROOT_DOMAIN)
+LMS_ROOT_URL = "{protocol}://{domain}:18000".format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 LMS_INTERNAL_ROOT_URL = LMS_ROOT_URL
 
 LOGIN_REDIRECT_URL = EDX_ROOT_URL + '/home/'
@@ -589,8 +591,13 @@ ENTERPRISE_CONSENT_API_URL = LMS_INTERNAL_ROOT_URL + '/consent/api/v1/'
 ENTERPRISE_MARKETING_FOOTER_QUERY_PARAMS = {}
 
 # Public domain name of Studio (should be resolvable from the end-user's browser)
-CMS_BASE = 'localhost:18010'
-CMS_ROOT_URL = "http://localhost:18010"
+CMS_BASE = '{domain}:18010'.format(domain=SERVER_ROOT_DOMAIN)
+CMS_ROOT_URL = "{protocol}://{domain}:18010".format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+
+# WP interactive vide base
+INTERACTIVE_SERVER_BASE = '{domain}:2222'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+INTERACTIVE_SERVER_ROOT_URL = '{protocol}://{domain}:2222'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+INTERACTIVE_VIDEO_LINK_URL = '{protocol}://{domain}:2222/wp-admin/admin.php?page=h5p_new'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 
 LOG_DIR = '/edx/var/log/edx'
 
@@ -608,7 +615,7 @@ IDA_LOGOUT_URI_LIST = []
 ELASTIC_SEARCH_CONFIG = [
     {
         'use_ssl': False,
-        'host': 'localhost',
+        'host': '{domain}'.format(domain=SERVER_ROOT_DOMAIN),
         'port': 9200
     }
 ]
@@ -633,7 +640,7 @@ CSRF_TRUSTED_ORIGINS = []
 
 #################### CAPA External Code Evaluation #############################
 XQUEUE_INTERFACE = {
-    'url': 'http://localhost:18040',
+    'url': '{protocol}://{domain}:18040'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL),
     'basic_auth': ['edx', 'edx'],
     'django_auth': {
         'username': 'lms',
@@ -1944,7 +1951,7 @@ MANUAL_ENROLLMENT_ROLE_CHOICES = ['Learner', 'Support', 'Partner']
 
 ############## Settings for the Discovery App ######################
 
-COURSE_CATALOG_API_URL = 'http://localhost:8008/api/v1'
+COURSE_CATALOG_API_URL = '{protocol}://{domain}:8008/api/v1'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 
 # which access.py permission name to check in order to determine if a course is visible in
 # the course catalog. We default this to the legacy permission 'see_exists'.
@@ -2044,17 +2051,17 @@ plugin_settings.add_plugins(__name__, plugin_constants.ProjectType.CMS, plugin_c
 COURSE_EXPORT_DOWNLOAD_CHUNK_SIZE = 8192
 
 # E-Commerce API Configuration
-ECOMMERCE_PUBLIC_URL_ROOT = 'http://localhost:8002'
-ECOMMERCE_API_URL = 'http://localhost:8002/api/v2'
+ECOMMERCE_PUBLIC_URL_ROOT = '{protocol}://{domain}:8002'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+ECOMMERCE_API_URL = '{protocol}://{domain}:8002/api/v2'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 ECOMMERCE_API_SIGNING_KEY = 'SET-ME-PLEASE'
 
-CREDENTIALS_INTERNAL_SERVICE_URL = 'http://localhost:8005'
-CREDENTIALS_PUBLIC_SERVICE_URL = 'http://localhost:8005'
+CREDENTIALS_INTERNAL_SERVICE_URL = '{protocol}://{domain}:8005'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+CREDENTIALS_PUBLIC_SERVICE_URL = '{protocol}://{domain}:8005'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 
-ANALYTICS_DASHBOARD_URL = 'http://localhost:18110/courses'
-ANALYTICS_DASHBOARD_NAME = 'Your Platform Name Here Insights'
+ANALYTICS_DASHBOARD_URL = '{protocol}://{domain}:18110/courses'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+ANALYTICS_DASHBOARD_NAME = 'BKEdx Insights'
 
-COMMENTS_SERVICE_URL = 'http://localhost:18080'
+COMMENTS_SERVICE_URL = '{protocol}://{domain}:18080'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 COMMENTS_SERVICE_KEY = 'password'
 
 CAS_SERVER_URL = ""
@@ -2182,33 +2189,45 @@ FERNET_KEYS = [
 ]
 
 ### Proctoring configuration (redirct URLs and keys shared between systems) ####
+# PROCTORING_BACKENDS = {
+#     'DEFAULT': 'null',
+#     # The null key needs to be quoted because
+#     # null is a language independent type in YAML
+#     'null': {}
+# }
 PROCTORING_BACKENDS = {
-    'DEFAULT': 'null',
-    # The null key needs to be quoted because
-    # null is a language independent type in YAML
-    'null': {}
+    'DEFAULT': 'software_secure',
+    'software_secure': {
+        "crypto_key": "{add SoftwareSecure crypto key here}",
+        "exam_register_endpoint": "{add endpoint to SoftwareSecure}",
+        "exam_sponsor": "{add SoftwareSecure sponsor}",
+        "organization": "{add SoftwareSecure organization}",
+        "secret_key": "{add SoftwareSecure secret key}",
+        "secret_key_id": "{add SoftwareSecure secret key id}",
+        "software_download_url": "edxstage.remoteproctor.com"
+    }
 }
 
 PROCTORING_SETTINGS = {}
 
 ################## BLOCKSTORE RELATED SETTINGS  #########################
-BLOCKSTORE_PUBLIC_URL_ROOT = 'http://localhost:18250'
-BLOCKSTORE_API_URL = 'http://localhost:18250/api/v1/'
+BLOCKSTORE_PUBLIC_URL_ROOT = '{protocol}://{domain}:18250'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+BLOCKSTORE_API_URL = '{protocol}://{domain}:18250/api/v1/'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 # Which of django's caches to use for storing anonymous user state for XBlocks
 # in the blockstore-based XBlock runtime
 XBLOCK_RUNTIME_V2_EPHEMERAL_DATA_CACHE = 'default'
 
 ###################### LEARNER PORTAL ################################
-LEARNER_PORTAL_URL_ROOT = 'http://localhost:18000'
+LEARNER_PORTAL_URL_ROOT = '{protocol}://{domain}:18000'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 
 ######################### MICROSITE ###############################
 MICROSITE_ROOT_DIR = '/edx/app/edxapp/edx-microsite'
 MICROSITE_CONFIGURATION = {}
 
 ############################ JWT #################################
-JWT_ISSUER = 'http://localhost:8000/oauth2'
+JWT_ISSUER = '{protocol}://{domain}:8000/oauth2'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 DEFAULT_JWT_ISSUER = {
-    'ISSUER': 'http://localhost:8000/oauth2',
+    'ISSUER': '{protocol}://{domain}:8000/oauth2'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL),
     'AUDIENCE': 'SET-ME-PLEASE',
     'SECRET_KEY': 'SET-ME-PLEASE'
 }
