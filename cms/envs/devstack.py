@@ -13,13 +13,16 @@ del DEFAULT_FILE_STORAGE
 COURSE_IMPORT_EXPORT_STORAGE = 'django.core.files.storage.FileSystemStorage'
 USER_TASKS_ARTIFACT_STORAGE = COURSE_IMPORT_EXPORT_STORAGE
 
+SERVER_ROOT_PROTOCOL = 'http'
+SERVER_ROOT_DOMAIN = 'localhost'
+
 DEBUG = True
 USE_I18N = True
 DEFAULT_TEMPLATE_ENGINE['OPTIONS']['debug'] = DEBUG
-SITE_NAME = 'localhost:8001'
+SITE_NAME = '{domain}:8001'.format(domain=SERVER_ROOT_DOMAIN)
 HTTPS = 'off'
 
-CMS_BASE = 'localhost:18010'
+CMS_BASE = '{domain}:18010'.format(domain=SERVER_ROOT_DOMAIN)
 
 ################################ LOGGERS ######################################
 
@@ -42,8 +45,8 @@ EMAIL_FILE_PATH = '/edx/src/ace_messages/'
 
 ################################# LMS INTEGRATION #############################
 
-LMS_BASE = 'localhost:18000'
-LMS_ROOT_URL = 'http://{}'.format(LMS_BASE)
+LMS_BASE = '{domain}:18000'.format(domain=SERVER_ROOT_DOMAIN)
+LMS_ROOT_URL = '{protocol}://{domain}:18000'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 FEATURES['PREVIEW_LMS_BASE'] = "preview." + LMS_BASE
 
 ########################### PIPELINE #################################
@@ -125,8 +128,8 @@ FEATURES['LICENSING'] = True
 XBLOCK_SETTINGS.update({'VideoBlock': {'licensing_enabled': True}})
 
 ################################ SEARCH INDEX ################################
-FEATURES['ENABLE_COURSEWARE_INDEX'] = False
-FEATURES['ENABLE_LIBRARY_INDEX'] = False
+FEATURES['ENABLE_COURSEWARE_INDEX'] = True
+FEATURES['ENABLE_LIBRARY_INDEX'] = True
 SEARCH_ENGINE = "search.elastic.ElasticSearchEngine"
 
 ################################ COURSE DISCUSSIONS ###########################
@@ -139,10 +142,10 @@ CREDENTIALS_SERVICE_USERNAME = 'credentials_worker'
 FEATURES['CERTIFICATES_HTML_VIEW'] = True
 
 ########################## AUTHOR PERMISSION #######################
-FEATURES['ENABLE_CREATOR_GROUP'] = False
+FEATURES['ENABLE_CREATOR_GROUP'] = True
 
 ################### FRONTEND APPLICATION PUBLISHER URL ###################
-FEATURES['FRONTEND_APP_PUBLISHER_URL'] = 'http://localhost:18400'
+FEATURES['FRONTEND_APP_PUBLISHER_URL'] = '{protocol}://{domain}:18400'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 
 ################################# DJANGO-REQUIRE ###############################
 
@@ -185,8 +188,8 @@ JWT_AUTH.update({
 # pylint: enable=unicode-format-string
 
 IDA_LOGOUT_URI_LIST = [
-    'http://localhost:18130/logout/',  # ecommerce
-    'http://localhost:18150/logout/',  # credentials
+    '{protocol}://{domain}:18130/logout/'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL),  # ecommerce
+    '{protocol}://{domain}:18150/logout/'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL),  # credentials
 ]
 
 ############################### BLOCKSTORE #####################################
