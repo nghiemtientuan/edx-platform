@@ -257,7 +257,7 @@ def get_component_templates(courselike, library=False):
 
     component_display_names = {
         'discussion': _("Discussion"),
-        'html': _("HTML"),
+        'html': _("Embed"),
         'problem': _("Problem"),
         'video': _("Video")
     }
