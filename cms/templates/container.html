@@ -134,6 +134,10 @@ from openedx.core.djangolib.markup import HTML, Text
                             <span class="action-button-text">${_("Preview")}</span>
                         </a>
                     </li>
+                    <li class="action-item action-preview nav-item">
+                        <a href="${settings.INTERACTIVE_VIDEO_LINK_URL}" target="_blank" class="button new-button"><span class="icon fa fa-plus icon-inline" aria-hidden="true"></span>
+                            Create Interactive Video</a>
+                    </li>
                 % else:
                     <li class="action-item action-edit nav-item">
                         <a href="#" class="button button-edit action-button edit-button">
