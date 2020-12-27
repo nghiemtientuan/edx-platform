@@ -406,3 +406,11 @@ if os.path.isfile(join(dirname(abspath(__file__)), 'private.py')):
 # ]
 # TEMPLATES[1]["DIRS"] = _make_mako_template_dirs
 # derive_settings(__name__)
+
+if 'figures.apps.FiguresConfig' in INSTALLED_APPS:
+    from figures.settings.lms_production import *
+    ENV_TOKENS.setdefault('FIGURES', {})
+    update_webpack_loader(WEBPACK_LOADER, ENV_TOKENS['FIGURES'])
+    update_celerybeat_schedule(CELERYBEAT_SCHEDULE, ENV_TOKENS['FIGURES'])
+    CELERY_IMPORTS += ( 'figures.tasks', )
+
