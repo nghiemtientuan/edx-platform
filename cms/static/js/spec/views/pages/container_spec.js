@@ -709,8 +709,14 @@ function parameterized_suite(label, globalPageOptions) {
                                     }, {
                                         category: 'html',
                                         boilerplate_name: 'raw.yaml',
-                                        display_name: 'Raw HTML'
-                                    }],
+                                        display_name: 'Embed Content'
+                                    },
+                                    {
+                                        category: 'html',
+                                        boilerplate_name: 'pdf.yaml',
+                                        display_name: 'PDF Template'
+                                    }
+                                    ],
                                 type: 'html',
                                 support_legend: {
                                     show_legend: true,
@@ -751,7 +757,7 @@ function parameterized_suite(label, globalPageOptions) {
                                     }, {
                                         category: 'html',
                                         boilerplate_name: 'raw.yaml',
-                                        display_name: 'Raw HTML'
+                                        display_name: 'Embed Content'
                                     }],
                                 type: 'html',
                                 support_legend: {
@@ -792,9 +798,10 @@ function parameterized_suite(label, globalPageOptions) {
                                     }, {
                                         category: 'html',
                                         boilerplate_name: 'raw.yaml',
-                                        display_name: 'Raw HTML',
+                                        display_name: 'Embed Content',
                                         support_level: 'us'
-                                    }],
+                                    },
+                                    ],
                                 type: 'html',
                                 support_legend: {
                                     show_legend: true,

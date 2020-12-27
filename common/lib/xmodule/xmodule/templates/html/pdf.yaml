@@ -1,0 +1,15 @@
+---
+metadata:
+    display_name: PDF template
+    editor: raw
+data: |
+    <p><embed 
+          src="https://users.soict.hust.edu.vn/huonglt/IT/Intro-TruyenThong&MangMayTinh.pdf"
+    </p>
+
+    <style type="text/css">
+    embed{
+        width:100%;
+        height:800px;
+    }
+    </style>
