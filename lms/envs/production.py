@@ -616,6 +616,7 @@ if FEATURES.get('ENABLE_THIRD_PARTY_AUTH'):
         'third_party_auth.identityserver3.IdentityServer3',
         'third_party_auth.saml.SAMLAuthBackend',
         'third_party_auth.lti.LTIAuthBackend',
+        'lms.bksso.backends.BKCustomBackend',
     ])
 
     AUTHENTICATION_BACKENDS = list(tmp_backends) + list(AUTHENTICATION_BACKENDS)
