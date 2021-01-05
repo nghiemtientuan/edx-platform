@@ -715,6 +715,11 @@ function parameterized_suite(label, globalPageOptions) {
                                         category: 'html',
                                         boilerplate_name: 'pdf.yaml',
                                         display_name: 'PDF Template'
+                                    },
+                                    {
+                                        category: 'html',
+                                        boilerplate_name: 'raw.yaml',
+                                        display_name: 'Interactive Video Template'
                                     }
                                     ],
                                 type: 'html',

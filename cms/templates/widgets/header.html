@@ -17,6 +17,16 @@
           <img class="brand-image" src="${static.url('images/studio-logo.png')}" alt="${settings.STUDIO_NAME}" />
         </a>
       </h1>
+      <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
+        <a class="tab-nav-link studio-new-link" href="${settings.CMS_ADMIN_ROOT_URL}">
+           ADMIN SITE
+        </a>
+      </div>
+      <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
+        <a class="tab-nav-link studio-new-link" href="${settings.FIGURES_URL}">
+          FIGURES
+        </a>
+      </div>
 
       % if context_course:
       <%

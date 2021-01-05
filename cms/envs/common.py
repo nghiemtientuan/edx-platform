@@ -594,6 +594,10 @@ ENTERPRISE_MARKETING_FOOTER_QUERY_PARAMS = {}
 CMS_BASE = '{domain}:18010'.format(domain=SERVER_ROOT_DOMAIN)
 CMS_ROOT_URL = "{protocol}://{domain}:18010".format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 
+#CMS ADMIN
+CMS_ADMIN_ROOT_URL = '{protocol}://{domain}:18010/admin'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+FIGURES_URL = '{protocol}://{domain}:18000/figures'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+
 # WP interactive vide base
 INTERACTIVE_SERVER_BASE = '{domain}:2222'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 INTERACTIVE_SERVER_ROOT_URL = '{protocol}://{domain}:2222'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
