@@ -9,23 +9,25 @@
   from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
 %>
 <div class="wrapper-header wrapper" id="view-top">
-  <header class="primary" role="banner">
+  <header class="primary" role="banner">  
 
     <div class="wrapper wrapper-l">
-      <h1 class="branding">
-        <a class="brand-link" href="/">
-          <img class="brand-image" src="${static.url('images/studio-logo.png')}" alt="${settings.STUDIO_NAME}" />
-        </a>
-      </h1>
-      <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
-        <a class="tab-nav-link studio-new-link" href="${settings.CMS_ADMIN_ROOT_URL}">
-           ADMIN SITE
-        </a>
-      </div>
-      <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
-        <a class="tab-nav-link studio-new-link" href="${settings.FIGURES_URL}">
-          FIGURES
-        </a>
+      <div style="display: flex; align-items: center;">
+        <h1 class="branding" style="margin-right: 20px;">
+          <a class="brand-link" href="/">
+            <img class="brand-image" src="${static.url('images/studio-logo.png')}" alt="${settings.STUDIO_NAME}" />
+          </a>
+        </h1>
+        <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
+          <a class="tab-nav-link studio-new-link" href="${settings.CMS_ADMIN_ROOT_URL}">
+            ADMIN SITE
+          </a>
+        </div>
+        <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
+          <a class="tab-nav-link studio-new-link" href="${settings.FIGURES_URL}">
+            FIGURES
+          </a>
+        </div>
       </div>
 
       % if context_course:
