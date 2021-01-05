@@ -1161,6 +1161,9 @@ DCS_SESSION_COOKIE_SAMESITE_FORCE_ALL = True
 # CMS base
 CMS_BASE = '{domain}:18010'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 CMS_ROOT_URL = '{protocol}://{domain}:18010'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+# CMS ADMIN
+CMS_ADMIN_ROOT_URL = '{protocol}://{domain}:18010/admin'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
+FIGURES_URL = '{protocol}://{domain}:18000/figures'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 
 # LMS base
 LMS_BASE = '{domain}:18000'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)

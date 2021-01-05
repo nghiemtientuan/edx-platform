@@ -54,13 +54,11 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
     % endif
 
     <!-- Link to studio -->
-    % if user.is_staff:
       <div class="mobile-nav-item hidden-mobile nav-item nav-tab">
           <a class="tab-nav-link studio-new-link" href="${settings.CMS_ROOT_URL}">
              Studio
           </a>
       </div>
-    % endif
     <!-- end Link to studio -->
 
     % if show_sysadmin_dashboard:
