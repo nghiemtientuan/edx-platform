@@ -718,7 +718,7 @@ function parameterized_suite(label, globalPageOptions) {
                                     },
                                     {
                                         category: 'html',
-                                        boilerplate_name: 'raw.yaml',
+                                        boilerplate_name: 'video.yaml',
                                         display_name: 'Interactive Video Template'
                                     }
                                     ],
