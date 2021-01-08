@@ -720,6 +720,11 @@ function parameterized_suite(label, globalPageOptions) {
                                         category: 'html',
                                         boilerplate_name: 'video.yaml',
                                         display_name: 'Interactive Video Template'
+                                    },
+                                    {
+                                        category: 'html',
+                                        boilerplate_name: 'slide.yaml',
+                                        display_name: 'Slide Template'
                                     }
                                     ],
                                 type: 'html',
