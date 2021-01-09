@@ -35,8 +35,8 @@ SITE_NAME = LMS_BASE
 CELERY_ALWAYS_EAGER = True
 HTTPS = 'off'
 
-LMS_ROOT_URL = '{protocol}://{domain}:18000'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
-LMS_INTERNAL_ROOT_URL = LMS_ROOT_URL
+LMS_ROOT_URL = 'http://localhost:18000'
+LMS_INTERNAL_ROOT_URL = '{protocol}://{domain}:18000'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL)
 ENTERPRISE_API_URL = '{}/enterprise/api/v1/'.format(LMS_INTERNAL_ROOT_URL)
 IDA_LOGOUT_URI_LIST = [
     '{protocol}://{domain}:18130/logout/'.format(domain=SERVER_ROOT_DOMAIN, protocol=SERVER_ROOT_PROTOCOL),  # ecommerce
