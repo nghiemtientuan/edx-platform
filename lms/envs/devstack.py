@@ -106,10 +106,11 @@ DEBUG_TOOLBAR_CONFIG = {
 
 
 def should_show_debug_toolbar(request):
+    return False
     # We always want the toolbar on devstack unless running tests from another Docker container
-    if request.get_host().startswith('edx.devstack.lms:'):
-        return False
-    return True
+    # if request.get_host().startswith('edx.devstack.lms:'):
+    #     return False
+    # return True
 
 ########################### PIPELINE #################################
 
